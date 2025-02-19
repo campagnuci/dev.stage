@@ -11,7 +11,10 @@ export const accessInviteLinkRoute: FastifyPluginAsyncZod = async (app) => {
       description: 'Redirects user to frontend subscription page and counts the access',
       params: z.object({
         subscriberId: z.string().uuid()
-      })
+      }),
+      response: {
+        302: z.null()
+      }
     }
   }, async (request, reply) => {
     const { subscriberId } = request.params
